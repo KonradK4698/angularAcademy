@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { SearchModuleRoutingModule } from './search-module-routing.module';
 import { SearchModuleComponent } from './search-module.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -11,7 +13,9 @@ import { SearchModuleComponent } from './search-module.component';
   ],
   imports: [
     CommonModule,
-    SearchModuleRoutingModule
+    SearchModuleRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SearchModuleModule { }
