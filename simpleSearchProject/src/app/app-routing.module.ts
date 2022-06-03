@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: 'search', loadChildren: () => import('./search-module/search-module.module').then(m => m.SearchModuleModule) },
   {
     path: '',
-    redirectTo: '',
+    redirectTo: 'search',
     pathMatch: 'full'
   }
 ];
