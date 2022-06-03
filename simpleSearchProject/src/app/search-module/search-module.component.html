@@ -1,5 +1,11 @@
 
 
-<input type="text" name="searchBar" id="searchBar" placeholder="Write smth..." [formControl]="searchBar" />
-
+<input #searchBar type="text" name="searchBar" id="searchBar" placeholder="Write smth..." (input)="search(searchBar.value)"/>
+<ul class="search-result">
+    <li *ngFor="let hero of phrases$ | async" >
+      <a routerLink="/detail/{{hero.phrase}}">
+        {{hero.phrase}}
+      </a>
+    </li>
+  </ul>
 
