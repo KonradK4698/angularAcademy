@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-search-module',
@@ -10,13 +11,18 @@ export class SearchModuleComponent implements OnInit {
 
   searchBar = new FormControl('');
 
-  constructor() { }
+  constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
 
-    console.log(this.searchBar.valueChanges.subscribe({
-      next: getVal => console.log(getVal)
-    }))
+    this.searchBar.valueChanges.subscribe({
+      next: (word)=>{
+        this.searchService.findPhrases().subscribe({
+          next: (phrases) => {console.log(phrases)},
+          complete: ()=>{console.log("gotowe")}
+        })
+      }
+    })
 
   }
 
