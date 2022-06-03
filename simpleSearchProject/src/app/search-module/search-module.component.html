@@ -1,11 +1,15 @@
+<span id="title">Akadamia Angular</span>
+<span id="appName">phrase search engine</span>
 
-
-<input #searchBar type="text" name="searchBar" id="searchBar" placeholder="Write smth..." (input)="search(searchBar.value)"/>
-<ul class="search-result">
-    <li *ngFor="let hero of phrases$ | async" >
-      <a routerLink="/detail/{{hero.phrase}}">
-        {{hero.phrase}}
-      </a>
+<div id="searchContainer">
+  <div class="searchBarContainer">
+    <input #searchBar type="text" name="searchBar" id="searchBar" placeholder="Enter the phrase..." (input)="search(searchBar.value)"/>
+    <button title="Search in Google" class="searchButton" (click)="searchInGoogle(searchBar.value)"><img src="../assets/search.png"></button>
+  </div>
+  
+  <ul class="search-result" >
+    <li *ngFor="let phrase of phrases$ | async" (click)="searchBar.value = phrase.phrase">
+      {{phrase.phrase}}
     </li>
   </ul>
-
+</div>
