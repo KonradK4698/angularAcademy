@@ -13,14 +13,18 @@ import { Phrase } from '../phraseInterface';
 })
 export class SearchModuleComponent implements OnInit {
 
-  searchBar = new FormControl('');
+  
   phrases$!: Observable<Phrase[]>;
   private searchPhrase = new Subject<string>();
 
   constructor(private searchService: SearchService) { }
 
   search(word: string): void{
-    this.searchPhrase.next(word)
+    this.searchPhrase.next(word);
+  }
+
+  searchInGoogle(choosenPhrase: string): void{
+    if(choosenPhrase.trim().length > 0 ) window.open(`https://www.google.com/search?q=${choosenPhrase}`);
   }
 
   ngOnInit(): void {
